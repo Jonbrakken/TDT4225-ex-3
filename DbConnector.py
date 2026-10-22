@@ -13,17 +13,23 @@ class DbConnector:
     """
 
     def __init__(self,
-                 DATABASE='DATABASE_NAME',
-                 HOST="tdt4225-xx.idi.ntnu.no",
-                 USER="TEST_USER",
-                 PASSWORD="test123"):
+                 DATABASE='movies_assignment',
+                 HOST="localhost",
+                 USER="",
+                 PASSWORD=""):
         uri = "mongodb://%s:%s@%s/%s" % (USER, PASSWORD, HOST, DATABASE)
+        if not USER:
+            uri = "mongodb://%s/%s" % (HOST, DATABASE)
         # Connect to the databases
         try:
-            self.client = MongoClient(uri)
+            self.client = MongoClient(uri, serverSelectionTimeoutMS=5000, tz_aware=True)
+            self.client.admin.command("ping")
             self.db = self.client[DATABASE]
         except Exception as e:
             print("ERROR: Failed to connect to db:", e)
+            if hasattr(self, "client"):
+                self.client.close()
+            raise
 
         # get database information
         print("You are connected to the database:", self.db.name)

@@ -1,0 +1,11 @@
+data/
+tests/
+.venv/
+output/
+__pycache__/
+*.py[cod]
+.env
+.env.*
+!.env.example
+.mongo-data/
+.mplconfig/
