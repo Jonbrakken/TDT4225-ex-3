@@ -1,5 +1,6 @@
 """Streaming raw EDA and cleaned movie distributions, without requiring MongoDB."""
 import csv
+import json
 import math
 import os
 from collections import Counter
@@ -180,6 +181,66 @@ def plot_eda(target, movies, distributions):
         plt.close(fig)
 
 
+def print_summary(summary):
+    """Print source counts separately from cleaned-data coverage."""
+    from tabulate import tabulate
+
+    cleaned = summary['cleaned']
+    counts = summary['ratings']['counts']
+    quality = summary['raw_files']['movies_metadata.csv']['quality']
+    rows = [
+        ('Source movie rows', summary['raw_files']['movies_metadata.csv']['rows']),
+        ('Invalid movie IDs', quality.get('invalid_primary_ids', 0)),
+        ('Extra duplicate movie rows', quality.get('duplicate_primary_ids', 0)),
+        ('Retained movies', cleaned['movies']),
+        ('Source ratings', counts['ratings_rows']),
+        ('Accepted ratings', counts['ratings_accepted']),
+        ('Rejected ratings', counts.get('ratings_rejected', 0)),
+        ('Users with accepted ratings', summary['ratings']['users']),
+        ('Ratings without movie metadata', counts.get('ratings_unmapped', 0)),
+    ]
+    print(f"\nEDA SUMMARY ({summary['sources']['mode']} ratings)")
+    print(tabulate([(label, f'{value:,}') for label, value in rows],
+                   headers=['Measure', 'Count'], tablefmt='simple', disable_numparse=True))
+    rows = [(field, f"{cleaned['missing'].get(field, 0):,}",
+             f"{100 * cleaned['missing'].get(field, 0) / cleaned['movies']:.1f}%")
+            for field in COVERAGE_FIELDS]
+    print('\nMISSING OR UNUSABLE VALUES AFTER CLEANING (retained movies)')
+    print(tabulate(rows, headers=['Field', 'Movies', 'Share'], tablefmt='simple', disable_numparse=True))
+    runtime = cleaned['numeric']['runtime']
+    print(f"\nMedian positive runtime: {runtime['median']:g} minutes (n={runtime['count']:,})")
+    print(f"Movies with positive revenue: {cleaned['numeric']['revenue']['count']:,}")
+    print('\nMOST COMMON GENRES (a movie may have several)')
+    genres = sorted(summary['distributions']['genre'].items(), key=lambda item: (-item[1], item[0]))[:5]
+    print(tabulate([(name, f'{count:,}') for name, count in genres],
+                   headers=['Genre', 'Movies'], tablefmt='simple', disable_numparse=True))
+
+
+COVERAGE_FIELDS = ('budget', 'revenue', 'tagline', 'genres', 'cast',
+                   'directors', 'runtime', 'release_date')
+
+
+def plot_missing_values(target, summary):
+    """Show missing/empty/unusable fields among retained movies."""
+    os.environ.setdefault('MPLCONFIGDIR', str(target / '.mplconfig'))
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+
+    cleaned = summary['cleaned']
+    fields = sorted(COVERAGE_FIELDS, key=lambda field: cleaned['missing'].get(field, 0))
+    shares = [100 * cleaned['missing'].get(field, 0) / cleaned['movies'] for field in fields]
+    fig, ax = plt.subplots(figsize=(9, 5))
+    bars = ax.barh([field.replace('_', ' ').title() for field in fields], shares, color='#356b91')
+    ax.bar_label(bars, labels=[f'{share:.1f}%' for share in shares], padding=4)
+    ax.set(xlim=(0, 100), xlabel='Share of retained movies (%)',
+           title=f'Missing or unusable values after cleaning (n={cleaned["movies"]:,})')
+    ax.spines[['top', 'right']].set_visible(False)
+    fig.tight_layout()
+    fig.savefig(target / 'missing_values.png', dpi=160)
+    plt.close(fig)
+
+
 if __name__ == '__main__':
     import argparse
     import sys
@@ -188,12 +249,20 @@ if __name__ == '__main__':
     root = Path(__file__).resolve().parent
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--small', action='store_true')
+    parser.add_argument('--summary-only', action='store_true',
+                        help='Print saved EDA and refresh the missing-values plot without rereading CSVs.')
     parser.add_argument('--data-dir', type=Path, default=root / 'data')
     parser.add_argument('--output-dir', type=Path, default=root / 'output')
     args = parser.parse_args()
     try:
-        result = run_eda(args.data_dir, args.output_dir, args.small)
-        print(f'EDA saved for {result["sources"]["mode"]} ratings')
+        target = args.output_dir / 'eda' / ('small' if args.small else 'full')
+        if args.summary_only:
+            result = json.loads((target / 'summary.json').read_text(encoding='utf-8'))
+        else:
+            result = run_eda(args.data_dir, args.output_dir, args.small)
+        print_summary(result)
+        plot_missing_values(target, result)
+        print(f'\nEDA files: {target}')
     except (RuntimeError, ValueError, OSError) as exc:
         print(f'Error: {exc}', file=sys.stderr)
         sys.exit(1)
