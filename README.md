@@ -91,7 +91,7 @@ Queries **1, 2, 4, 5, and 10** combine MongoDB with Python: exact medians for 1/
 
 1. Directors: >=5 distinct movies, exact median of known revenues, mean supported TMDB vote average; top ten by median revenue.
 2. Actor pairs: unordered, distinct actor IDs per movie, >=3 shared movies; known-vote mean. A bounded dictionary flushes additive upserts to `actor_pair_stats`. The collection is rebuilt each run; cast is never truncated.
-3. Genre breadth: >=10 credited movies, including genreless films; distinct genre IDs; up to five alphabetically ordered example names.
+3. Genre breadth: >=10 credited movies, including genreless films; distinct genre IDs; rank by genre count descending, then movie count descending, then actor ID ascending for any remaining ties. Up to five alphabetically ordered example names.
 4. Collections: >=3 movies and some known revenue; sum known revenue, exact median known score, and valid release-date range.
 5. Runtime: decade and first retained source genre, all-movie counts with exact median known positive runtime. Groups with no runtimes remain and sort last within their decade.
 6. Female proportion: first five actors with valid billing orders, selected before ignoring unknown gender. Code 1 is female, 2 male, 3 known nonbinary, 0/missing unknown. Unexpected codes are flagged and excluded. Average the per-movie ratios, without pooling cast observations; skip movies without known genders. Equal billing orders use actor ID as a deterministic tie-breaker.
@@ -99,6 +99,8 @@ Queries **1, 2, 4, 5, and 10** combine MongoDB with Python: exact medians for 1/
 8. Collaborations: >=3 films with >=100 votes and supported averages; known-revenue mean. Same-person director/actor pairs are allowed.
 9. **Data limitation:** companies have only ID and name, with no country. Use explicit country code `US` or country name `United States`/`United States of America` (case-insensitive, surrounding whitespace allowed). Company names are never nationality evidence. This is a partial interpretation of the company-or-country requirement; US-company-only films may be missed. No external enrichment is invented. A deterministic example is the lowest-ID qualifying movie with a nonempty title.
 10. Population variance uses MongoDB `$stdDevPop` squared (division by N). All accepted ratings affect counts/variance. A separate disk-backed pipeline deduplicates user/movie IDs, groups those user IDs by movie, joins each movie's genres once, and counts distinct genre IDs per user. It scans ratings sequentially because nearly all ratings have mapped movies. Per-movie user-ID arrays are bounded by this dataset's 270,896 users (well below the BSON document limit); no user rating histories are collected. This prevents multi-genre films or repeated ratings inflating counts. Both rankings require >=20 ratings. Users without mapped genres have zero genres.
+
+The genre-diverse user ranking sorts by genre count descending, then rating count descending, then user ID ascending for any remaining ties. The highest-variance ranking keeps its existing user ID tie-breaker.
 
 Exact medians and modest movie-level groups use ordinary Python dictionaries/lists and `statistics.median`. Large rating groups and joins run in MongoDB with `allowDiskUse=True`.
 

@@ -120,7 +120,7 @@ def query_03(db):
                                                'in': {'$setUnion': ['$$value', '$$this']}}}}},
         {'$match': {'movie_count': {'$gte': 10}}},
         {'$set': {'genre_count': {'$size': '$genre_ids'}}},
-        {'$sort': {'genre_count': -1, 'actor_id': 1}}, {'$limit': 10},
+        {'$sort': {'genre_count': -1, 'movie_count': -1, 'actor_id': 1}}, {'$limit': 10},
         name_lookup('cast', 'actor_id', 'actor_label'),
         {'$lookup': {'from': 'movies', 'let': {'ids': '$genre_ids'}, 'pipeline': [
             {'$unwind': '$genres'},
@@ -204,8 +204,8 @@ def query_06(db):
 
 def query_07(db):
     """MongoDB OR text search for noir / neo-noir, >=50 votes, top twenty scores."""
-    # The text index tokenizes neo-noir into neo and noir. Searching noir matches
-    # both requested forms; adding neo-noir unquoted would also admit neo-only text.
+    #The text index tokenizes neo-noir into neo and noir. Searching noir matches
+    #both requested forms; adding neo-noir unquoted would also admit neo-only text.
     cursor = db.movies.find({'$text': {'$search': 'noir'},
                              'vote_count': {'$gte': 50}, 'vote_average': {'$ne': None}},
                             {'title': 1, 'release_year': 1, 'vote_average': 1, 'vote_count': 1})
@@ -219,8 +219,8 @@ def query_08(db):
     pipeline = [
         {'$match': {'vote_count': {'$gte': 100}, 'vote_average': {'$ne': None}}},
         {'$unwind': '$directors'}, {'$unwind': '$cast'},
-        # A person appears only once in each cleaned array. Group by film as well
-        # to retain distinct-film counting even if a duplicate entry is supplied.
+        #A person appears only once in each cleaned array. Group by film as well
+        #to retain distinct-film counting even if a duplicate entry is supplied.
         {'$group': {'_id': {'director': '$directors.id', 'actor': '$cast.id', 'movie': '$_id'},
                     'vote': {'$first': '$vote_average'}, 'revenue': {'$first': '$revenue'}}},
         {'$group': {'_id': {'director': '$_id.director', 'actor': '$_id.actor'},
@@ -272,21 +272,21 @@ def query_10(db):
     pipeline = [
         {'$match': {'movie_id': {'$ne': None}}},
         {'$group': {'_id': {'user': '$user_id', 'movie': '$movie_id'}}},
-        # Join each movie once, keeping only its distinct user IDs (not rating histories).
+        #Join each movie once, keeping only its distinct user IDs (not rating histories).
         {'$group': {'_id': '$_id.movie', 'users': {'$push': '$_id.user'}}},
         {'$lookup': {'from': 'movies', 'localField': '_id', 'foreignField': '_id',
                      'pipeline': [{'$project': {'genres.id': 1, '_id': 0}}], 'as': 'movie'}},
         {'$unwind': '$movie'}, {'$unwind': '$movie.genres'}, {'$unwind': '$users'},
         {'$group': {'_id': {'user': '$users', 'genre': '$movie.genres.id'}}},
         {'$group': {'_id': '$_id.user', 'genre_count': {'$sum': 1}}}]
-    # Nearly every rating maps to metadata: a sequential scan avoids millions of
-    # random document fetches through the movie_id index.
+    #Nearly every rating maps to metadata: a sequential scan avoids millions of
+    #random document fetches through the movie_id index.
     for row in db.ratings.aggregate(pipeline, allowDiskUse=True, hint={'$natural': 1}):
         if row['_id'] in users:
             users[row['_id']]['genre_count'] = row['genre_count']
     values = list(users.values())
     return [
-        {'ranking': 'most_genre_diverse', 'users': sorted(values, key=lambda r: (-r['genre_count'], r['user_id']))[:10]},
+        {'ranking': 'most_genre_diverse', 'users': sorted(values, key=lambda r: (-r['genre_count'], -r['rating_count'], r['user_id']))[:10]},
         {'ranking': 'highest_variance', 'users': sorted(values, key=lambda r: (-r['population_variance'], r['user_id']))[:10]}]
 
 
