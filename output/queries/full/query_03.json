@@ -1,0 +1,151 @@
+{
+  "query": 3,
+  "sources": {
+    "mode": "full",
+    "ratings": "ratings.csv",
+    "links": "links.csv"
+  },
+  "database": "movies_assignment",
+  "import_started_at": "2026-10-22T12:04:28.116000+00:00",
+  "assumptions": {
+    "metadata_duplicates": "Most populated cleaned whole row; earliest row wins ties.",
+    "money": "Nonpositive or invalid values are unknown, excluded from statistics.",
+    "ratings": "Every valid source row retained, including unmapped ratings.",
+    "query_9": "US production-country evidence only; company countries unavailable.",
+    "query_10": "Both rankings require >=20 ratings; population variance divides by N."
+  },
+  "elapsed_seconds": 9.685370124992914,
+  "result_row_count": 10,
+  "results": [
+    {
+      "actor_id": 113,
+      "movie_count": 148,
+      "genre_count": 20,
+      "actor_name": "Christopher Lee",
+      "example_genres": [
+        "Action",
+        "Adventure",
+        "Animation",
+        "Comedy",
+        "Crime"
+      ]
+    },
+    {
+      "actor_id": 55636,
+      "movie_count": 108,
+      "genre_count": 20,
+      "actor_name": "Donald Sutherland",
+      "example_genres": [
+        "Action",
+        "Adventure",
+        "Animation",
+        "Comedy",
+        "Crime"
+      ]
+    },
+    {
+      "actor_id": 4690,
+      "movie_count": 96,
+      "genre_count": 20,
+      "actor_name": "Christopher Walken",
+      "example_genres": [
+        "Action",
+        "Adventure",
+        "Animation",
+        "Comedy",
+        "Crime"
+      ]
+    },
+    {
+      "actor_id": 2778,
+      "movie_count": 94,
+      "genre_count": 20,
+      "actor_name": "Dennis Hopper",
+      "example_genres": [
+        "Action",
+        "Adventure",
+        "Animation",
+        "Comedy",
+        "Crime"
+      ]
+    },
+    {
+      "actor_id": 65827,
+      "movie_count": 87,
+      "genre_count": 20,
+      "actor_name": "Keith David",
+      "example_genres": [
+        "Action",
+        "Adventure",
+        "Animation",
+        "Comedy",
+        "Crime"
+      ]
+    },
+    {
+      "actor_id": 3896,
+      "movie_count": 82,
+      "genre_count": 20,
+      "actor_name": "Liam Neeson",
+      "example_genres": [
+        "Action",
+        "Adventure",
+        "Animation",
+        "Comedy",
+        "Crime"
+      ]
+    },
+    {
+      "actor_id": 15152,
+      "movie_count": 79,
+      "genre_count": 20,
+      "actor_name": "James Earl Jones",
+      "example_genres": [
+        "Action",
+        "Adventure",
+        "Animation",
+        "Comedy",
+        "Crime"
+      ]
+    },
+    {
+      "actor_id": 388,
+      "movie_count": 78,
+      "genre_count": 20,
+      "actor_name": "Jim Broadbent",
+      "example_genres": [
+        "Action",
+        "Adventure",
+        "Animation",
+        "Comedy",
+        "Crime"
+      ]
+    },
+    {
+      "actor_id": 8349,
+      "movie_count": 77,
+      "genre_count": 20,
+      "actor_name": "Martin Sheen",
+      "example_genres": [
+        "Action",
+        "Adventure",
+        "Animation",
+        "Comedy",
+        "Crime"
+      ]
+    },
+    {
+      "actor_id": 13726,
+      "movie_count": 72,
+      "genre_count": 20,
+      "actor_name": "Ned Beatty",
+      "example_genres": [
+        "Action",
+        "Adventure",
+        "Animation",
+        "Comedy",
+        "Crime"
+      ]
+    }
+  ]
+}

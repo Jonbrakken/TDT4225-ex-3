@@ -1,0 +1,151 @@
+{
+  "query": 3,
+  "sources": {
+    "mode": "small",
+    "ratings": "ratings_small.csv",
+    "links": "links_small.csv"
+  },
+  "database": "movies_assignment",
+  "import_started_at": "2026-10-22T12:00:24.887000+00:00",
+  "assumptions": {
+    "metadata_duplicates": "Most populated cleaned whole row; earliest row wins ties.",
+    "money": "Nonpositive or invalid values are unknown, excluded from statistics.",
+    "ratings": "Every valid source row retained, including unmapped ratings.",
+    "query_9": "US production-country evidence only; company countries unavailable.",
+    "query_10": "Both rankings require >=20 ratings; population variance divides by N."
+  },
+  "elapsed_seconds": 2.0019611250027083,
+  "result_row_count": 10,
+  "results": [
+    {
+      "actor_id": 113,
+      "actor_name": "Christopher Lee",
+      "movie_count": 148,
+      "genre_count": 20,
+      "example_genres": [
+        "Action",
+        "Adventure",
+        "Animation",
+        "Comedy",
+        "Crime"
+      ]
+    },
+    {
+      "actor_id": 141,
+      "actor_name": "David Carradine",
+      "movie_count": 60,
+      "genre_count": 20,
+      "example_genres": [
+        "Action",
+        "Adventure",
+        "Animation",
+        "Comedy",
+        "Crime"
+      ]
+    },
+    {
+      "actor_id": 147,
+      "actor_name": "Michael Madsen",
+      "movie_count": 65,
+      "genre_count": 20,
+      "example_genres": [
+        "Action",
+        "Adventure",
+        "Animation",
+        "Comedy",
+        "Crime"
+      ]
+    },
+    {
+      "actor_id": 378,
+      "actor_name": "Jonathan Pryce",
+      "movie_count": 55,
+      "genre_count": 20,
+      "example_genres": [
+        "Action",
+        "Adventure",
+        "Animation",
+        "Comedy",
+        "Crime"
+      ]
+    },
+    {
+      "actor_id": 388,
+      "actor_name": "Jim Broadbent",
+      "movie_count": 78,
+      "genre_count": 20,
+      "example_genres": [
+        "Action",
+        "Adventure",
+        "Animation",
+        "Comedy",
+        "Crime"
+      ]
+    },
+    {
+      "actor_id": 825,
+      "actor_name": "Stacy Keach",
+      "movie_count": 59,
+      "genre_count": 20,
+      "example_genres": [
+        "Action",
+        "Adventure",
+        "Animation",
+        "Comedy",
+        "Crime"
+      ]
+    },
+    {
+      "actor_id": 1926,
+      "actor_name": "Eddie Izzard",
+      "movie_count": 43,
+      "genre_count": 20,
+      "example_genres": [
+        "Action",
+        "Adventure",
+        "Animation",
+        "Comedy",
+        "Crime"
+      ]
+    },
+    {
+      "actor_id": 1954,
+      "actor_name": "Billy Zane",
+      "movie_count": 64,
+      "genre_count": 20,
+      "example_genres": [
+        "Action",
+        "Adventure",
+        "Animation",
+        "Comedy",
+        "Crime"
+      ]
+    },
+    {
+      "actor_id": 2222,
+      "actor_name": "Beau Bridges",
+      "movie_count": 60,
+      "genre_count": 20,
+      "example_genres": [
+        "Action",
+        "Adventure",
+        "Animation",
+        "Comedy",
+        "Crime"
+      ]
+    },
+    {
+      "actor_id": 2440,
+      "actor_name": "Bill Nighy",
+      "movie_count": 61,
+      "genre_count": 20,
+      "example_genres": [
+        "Action",
+        "Adventure",
+        "Animation",
+        "Comedy",
+        "Crime"
+      ]
+    }
+  ]
+}

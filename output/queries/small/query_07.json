@@ -1,0 +1,56 @@
+{
+  "query": 7,
+  "sources": {
+    "mode": "small",
+    "ratings": "ratings_small.csv",
+    "links": "links_small.csv"
+  },
+  "database": "movies_assignment",
+  "import_started_at": "2026-10-22T12:00:24.887000+00:00",
+  "assumptions": {
+    "metadata_duplicates": "Most populated cleaned whole row; earliest row wins ties.",
+    "money": "Nonpositive or invalid values are unknown, excluded from statistics.",
+    "ratings": "Every valid source row retained, including unmapped ratings.",
+    "query_9": "US production-country evidence only; company countries unavailable.",
+    "query_10": "Both rankings require >=20 ratings; population variance divides by N."
+  },
+  "elapsed_seconds": 0.002478457987308502,
+  "result_row_count": 5,
+  "results": [
+    {
+      "movie_id": 25858,
+      "title": "Drunken Angel",
+      "year": 1948,
+      "vote_average": 7.7,
+      "vote_count": 54
+    },
+    {
+      "movie_id": 31589,
+      "title": "The Bad Sleep Well",
+      "year": 1960,
+      "vote_average": 7.7,
+      "vote_count": 57
+    },
+    {
+      "movie_id": 1093,
+      "title": "Elevator to the Gallows",
+      "year": 1958,
+      "vote_average": 7.6,
+      "vote_count": 85
+    },
+    {
+      "movie_id": 316021,
+      "title": "Frank & Lola",
+      "year": 2016,
+      "vote_average": 5.7,
+      "vote_count": 51
+    },
+    {
+      "movie_id": 347945,
+      "title": "Synchronicity",
+      "year": 2015,
+      "vote_average": 5.7,
+      "vote_count": 114
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "query": 1,
+  "sources": {
+    "mode": "full",
+    "ratings": "ratings.csv",
+    "links": "links.csv"
+  },
+  "database": "movies_assignment",
+  "import_started_at": "2026-10-22T12:04:28.116000+00:00",
+  "assumptions": {
+    "metadata_duplicates": "Most populated cleaned whole row; earliest row wins ties.",
+    "money": "Nonpositive or invalid values are unknown, excluded from statistics.",
+    "ratings": "Every valid source row retained, including unmapped ratings.",
+    "query_9": "US production-country evidence only; company countries unavailable.",
+    "query_10": "Both rankings require >=20 ratings; population variance divides by N."
+  },
+  "elapsed_seconds": 0.3519567920011468,
+  "result_row_count": 10,
+  "results": [
+    {
+      "director_id": 8023,
+      "director_name": "Kyle Balda",
+      "movie_count": 5,
+      "median_revenue": 1020063384,
+      "mean_vote_average": 6.62,
+      "known_revenue_count": 3,
+      "vote_average_count": 5
+    },
+    {
+      "director_id": 11343,
+      "director_name": "David Yates",
+      "movie_count": 10,
+      "median_revenue": 936085967.5,
+      "mean_vote_average": 6.7,
+      "known_revenue_count": 6,
+      "vote_average_count": 9
+    },
+    {
+      "director_id": 108,
+      "director_name": "Peter Jackson",
+      "movie_count": 14,
+      "median_revenue": 871368364,
+      "mean_vote_average": 7.121428571428572,
+      "known_revenue_count": 11,
+      "vote_average_count": 14
+    },
+    {
+      "director_id": 12891,
+      "director_name": "Joss Whedon",
+      "movie_count": 5,
+      "median_revenue": 722136579.0,
+      "mean_vote_average": 7.4,
+      "known_revenue_count": 4,
+      "vote_average_count": 5
+    },
+    {
+      "director_id": 1,
+      "director_name": "George Lucas",
+      "movie_count": 7,
+      "median_revenue": 712398167.5,
+      "mean_vote_average": 6.814285714285714,
+      "known_revenue_count": 6,
+      "vote_average_count": 7
+    },
+    {
+      "director_id": 124748,
+      "director_name": "Chris Renaud",
+      "movie_count": 5,
+      "median_revenue": 709485961.0,
+      "mean_vote_average": 6.7,
+      "known_revenue_count": 4,
+      "vote_average_count": 5
+    },
+    {
+      "director_id": 229962,
+      "director_name": "Mike Thurmeier",
+      "movie_count": 6,
+      "median_revenue": 642911910.0,
+      "mean_vote_average": 6.666666666666667,
+      "known_revenue_count": 2,
+      "vote_average_count": 6
+    },
+    {
+      "director_id": 7087,
+      "director_name": "Brad Bird",
+      "movie_count": 6,
+      "median_revenue": 623722818,
+      "mean_vote_average": 7.15,
+      "known_revenue_count": 5,
+      "vote_average_count": 6
+    },
+    {
+      "director_id": 10943,
+      "director_name": "Francis Lawrence",
+      "movie_count": 6,
+      "median_revenue": 619388635.5,
+      "mean_vote_average": 6.8,
+      "known_revenue_count": 6,
+      "vote_average_count": 6
+    },
+    {
+      "director_id": 12099,
+      "director_name": "Raman Hui",
+      "movie_count": 5,
+      "median_revenue": 592121491.0,
+      "mean_vote_average": 6.22,
+      "known_revenue_count": 2,
+      "vote_average_count": 5
+    }
+  ]
+}

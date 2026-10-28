@@ -1,0 +1,151 @@
+{
+  "query": 10,
+  "sources": {
+    "mode": "full",
+    "ratings": "ratings.csv",
+    "links": "links.csv"
+  },
+  "database": "movies_assignment",
+  "import_started_at": "2026-10-22T12:04:28.116000+00:00",
+  "assumptions": {
+    "metadata_duplicates": "Most populated cleaned whole row; earliest row wins ties.",
+    "money": "Nonpositive or invalid values are unknown, excluded from statistics.",
+    "ratings": "Every valid source row retained, including unmapped ratings.",
+    "query_9": "US production-country evidence only; company countries unavailable.",
+    "query_10": "Both rankings require >=20 ratings; population variance divides by N."
+  },
+  "elapsed_seconds": 297.00474170901,
+  "result_row_count": 2,
+  "results": [
+    {
+      "ranking": "most_genre_diverse",
+      "users": [
+        {
+          "user_id": 45811,
+          "rating_count": 18276,
+          "population_variance": 0.6439188993816785,
+          "genre_count": 20
+        },
+        {
+          "user_id": 8659,
+          "rating_count": 9279,
+          "population_variance": 0.3138205156499663,
+          "genre_count": 20
+        },
+        {
+          "user_id": 270123,
+          "rating_count": 7638,
+          "population_variance": 1.1211287289863718,
+          "genre_count": 20
+        },
+        {
+          "user_id": 179792,
+          "rating_count": 7515,
+          "population_variance": 0.9000173261815266,
+          "genre_count": 20
+        },
+        {
+          "user_id": 228291,
+          "rating_count": 7410,
+          "population_variance": 0.27942426071927456,
+          "genre_count": 20
+        },
+        {
+          "user_id": 243443,
+          "rating_count": 6320,
+          "population_variance": 1.6133256827331341,
+          "genre_count": 20
+        },
+        {
+          "user_id": 98415,
+          "rating_count": 6094,
+          "population_variance": 0.8486149237377162,
+          "genre_count": 20
+        },
+        {
+          "user_id": 229879,
+          "rating_count": 6024,
+          "population_variance": 1.0251878649082233,
+          "genre_count": 20
+        },
+        {
+          "user_id": 98787,
+          "rating_count": 5814,
+          "population_variance": 2.0715013722614657,
+          "genre_count": 20
+        },
+        {
+          "user_id": 172224,
+          "rating_count": 5701,
+          "population_variance": 0.5333776842419801,
+          "genre_count": 20
+        }
+      ]
+    },
+    {
+      "ranking": "highest_variance",
+      "users": [
+        {
+          "user_id": 18703,
+          "rating_count": 20,
+          "population_variance": 5.0625,
+          "genre_count": 13
+        },
+        {
+          "user_id": 57842,
+          "rating_count": 20,
+          "population_variance": 5.0625,
+          "genre_count": 14
+        },
+        {
+          "user_id": 83102,
+          "rating_count": 20,
+          "population_variance": 5.0625,
+          "genre_count": 15
+        },
+        {
+          "user_id": 153882,
+          "rating_count": 20,
+          "population_variance": 5.0625,
+          "genre_count": 15
+        },
+        {
+          "user_id": 167241,
+          "rating_count": 34,
+          "population_variance": 5.0625,
+          "genre_count": 14
+        },
+        {
+          "user_id": 185889,
+          "rating_count": 26,
+          "population_variance": 5.0625,
+          "genre_count": 14
+        },
+        {
+          "user_id": 15395,
+          "rating_count": 83,
+          "population_variance": 5.06176513282044,
+          "genre_count": 14
+        },
+        {
+          "user_id": 71009,
+          "rating_count": 27,
+          "population_variance": 5.0555555555555545,
+          "genre_count": 13
+        },
+        {
+          "user_id": 179759,
+          "rating_count": 21,
+          "population_variance": 5.051020408163264,
+          "genre_count": 13
+        },
+        {
+          "user_id": 221535,
+          "rating_count": 120,
+          "population_variance": 5.039999999999998,
+          "genre_count": 19
+        }
+      ]
+    }
+  ]
+}

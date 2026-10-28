@@ -1,0 +1,81 @@
+{
+  "query": 9,
+  "sources": {
+    "mode": "full",
+    "ratings": "ratings.csv",
+    "links": "links.csv"
+  },
+  "database": "movies_assignment",
+  "import_started_at": "2026-10-22T12:04:28.116000+00:00",
+  "assumptions": {
+    "metadata_duplicates": "Most populated cleaned whole row; earliest row wins ties.",
+    "money": "Nonpositive or invalid values are unknown, excluded from statistics.",
+    "ratings": "Every valid source row retained, including unmapped ratings.",
+    "query_9": "US production-country evidence only; company countries unavailable.",
+    "query_10": "Both rankings require >=20 ratings; population variance divides by N."
+  },
+  "elapsed_seconds": 0.0384840409969911,
+  "result_row_count": 10,
+  "results": [
+    {
+      "movie_count": 112,
+      "language": "fr",
+      "example_movie_id": 101,
+      "example_title": "Leon: The Professional"
+    },
+    {
+      "movie_count": 72,
+      "language": "es",
+      "example_movie_id": 436,
+      "example_title": "Maria Full of Grace"
+    },
+    {
+      "movie_count": 56,
+      "language": "it",
+      "example_movie_id": 335,
+      "example_title": "Once Upon a Time in the West"
+    },
+    {
+      "movie_count": 51,
+      "language": "de",
+      "example_movie_id": 3543,
+      "example_title": "Bagdad Cafe"
+    },
+    {
+      "movie_count": 30,
+      "language": "ja",
+      "example_movie_id": 327,
+      "example_title": "Brother"
+    },
+    {
+      "movie_count": 15,
+      "language": "pt",
+      "example_movie_id": 9422,
+      "example_title": "A Civil Action"
+    },
+    {
+      "movie_count": 14,
+      "language": "xx",
+      "example_movie_id": 13924,
+      "example_title": "The Adventures of André and Wally B."
+    },
+    {
+      "movie_count": 12,
+      "language": "nl",
+      "example_movie_id": 39401,
+      "example_title": "The Secrets of Jonathan Sperry"
+    },
+    {
+      "movie_count": 11,
+      "language": "ru",
+      "example_movie_id": 15022,
+      "example_title": "Dirty Deeds"
+    },
+    {
+      "movie_count": 11,
+      "language": "zh",
+      "example_movie_id": 146,
+      "example_title": "Crouching Tiger, Hidden Dragon"
+    }
+  ]
+}

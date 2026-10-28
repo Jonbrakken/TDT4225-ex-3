@@ -1,0 +1,221 @@
+{
+  "query": 8,
+  "sources": {
+    "mode": "small",
+    "ratings": "ratings_small.csv",
+    "links": "links_small.csv"
+  },
+  "database": "movies_assignment",
+  "import_started_at": "2026-10-22T12:00:24.887000+00:00",
+  "assumptions": {
+    "metadata_duplicates": "Most populated cleaned whole row; earliest row wins ties.",
+    "money": "Nonpositive or invalid values are unknown, excluded from statistics.",
+    "ratings": "Every valid source row retained, including unmapped ratings.",
+    "query_9": "US production-country evidence only; company countries unavailable.",
+    "query_10": "Both rankings require >=20 ratings; population variance divides by N."
+  },
+  "elapsed_seconds": 0.8757859999896027,
+  "result_row_count": 20,
+  "results": [
+    {
+      "director_id": 5026,
+      "director_name": "Akira Kurosawa",
+      "actor_id": 106165,
+      "actor_name": "Eijirô Tôno",
+      "film_count": 3,
+      "mean_vote_average": 8.133333333333333,
+      "mean_revenue": 271841.0,
+      "known_revenue_count": 1
+    },
+    {
+      "director_id": 5026,
+      "director_name": "Akira Kurosawa",
+      "actor_id": 552175,
+      "actor_name": "Minoru Itô",
+      "film_count": 3,
+      "mean_vote_average": 8.133333333333333,
+      "mean_revenue": 271841.0,
+      "known_revenue_count": 1
+    },
+    {
+      "director_id": 5026,
+      "director_name": "Akira Kurosawa",
+      "actor_id": 552176,
+      "actor_name": "Haruo Suzuki",
+      "film_count": 3,
+      "mean_vote_average": 8.133333333333333,
+      "mean_revenue": 271841.0,
+      "known_revenue_count": 1
+    },
+    {
+      "director_id": 13848,
+      "director_name": "Charlie Chaplin",
+      "actor_id": 13856,
+      "actor_name": "Hank Mann",
+      "film_count": 3,
+      "mean_vote_average": 8.133333333333333,
+      "mean_revenue": 6506393.666666667,
+      "known_revenue_count": 3
+    },
+    {
+      "director_id": 138,
+      "director_name": "Quentin Tarantino",
+      "actor_id": 1037,
+      "actor_name": "Harvey Keitel",
+      "film_count": 3,
+      "mean_vote_average": 8.1,
+      "mean_revenue": 182573606.33333334,
+      "known_revenue_count": 3
+    },
+    {
+      "director_id": 1776,
+      "director_name": "Francis Ford Coppola",
+      "actor_id": 3096,
+      "actor_name": "John Cazale",
+      "film_count": 3,
+      "mean_vote_average": 8.1,
+      "mean_revenue": 99009750.66666667,
+      "known_revenue_count": 3
+    },
+    {
+      "director_id": 5026,
+      "director_name": "Akira Kurosawa",
+      "actor_id": 134294,
+      "actor_name": "Atsushi Watanabe",
+      "film_count": 3,
+      "mean_vote_average": 8.1,
+      "mean_revenue": 163540.5,
+      "known_revenue_count": 2
+    },
+    {
+      "director_id": 5026,
+      "director_name": "Akira Kurosawa",
+      "actor_id": 134406,
+      "actor_name": "Toranosuke Ogawa",
+      "film_count": 3,
+      "mean_vote_average": 8.1,
+      "mean_revenue": 163540.5,
+      "known_revenue_count": 2
+    },
+    {
+      "director_id": 1776,
+      "director_name": "Francis Ford Coppola",
+      "actor_id": 3087,
+      "actor_name": "Robert Duvall",
+      "film_count": 4,
+      "mean_vote_average": 8.075,
+      "mean_revenue": 96622408.25,
+      "known_revenue_count": 4
+    },
+    {
+      "director_id": 5026,
+      "director_name": "Akira Kurosawa",
+      "actor_id": 7456,
+      "actor_name": "Noriko Honma",
+      "film_count": 4,
+      "mean_vote_average": 8.075,
+      "mean_revenue": 141216.33333333334,
+      "known_revenue_count": 3
+    },
+    {
+      "director_id": 5026,
+      "director_name": "Akira Kurosawa",
+      "actor_id": 7457,
+      "actor_name": "Daisuke Katô",
+      "film_count": 4,
+      "mean_vote_average": 8.075,
+      "mean_revenue": 141216.33333333334,
+      "known_revenue_count": 3
+    },
+    {
+      "director_id": 5026,
+      "director_name": "Akira Kurosawa",
+      "actor_id": 552180,
+      "actor_name": "Ichirô Chiba",
+      "film_count": 4,
+      "mean_vote_average": 8.075,
+      "mean_revenue": 163540.5,
+      "known_revenue_count": 2
+    },
+    {
+      "director_id": 5026,
+      "director_name": "Akira Kurosawa",
+      "actor_id": 30907,
+      "actor_name": "Susumu Fujita",
+      "film_count": 3,
+      "mean_vote_average": 8.066666666666666,
+      "mean_revenue": null,
+      "known_revenue_count": 0
+    },
+    {
+      "director_id": 5026,
+      "director_name": "Akira Kurosawa",
+      "actor_id": 552170,
+      "actor_name": "Shôichi Hirose",
+      "film_count": 3,
+      "mean_vote_average": 8.066666666666666,
+      "mean_revenue": 271841.0,
+      "known_revenue_count": 1
+    },
+    {
+      "director_id": 5026,
+      "director_name": "Akira Kurosawa",
+      "actor_id": 552184,
+      "actor_name": "Haruya Sakamoto",
+      "film_count": 3,
+      "mean_vote_average": 8.066666666666666,
+      "mean_revenue": 271841.0,
+      "known_revenue_count": 1
+    },
+    {
+      "director_id": 5026,
+      "director_name": "Akira Kurosawa",
+      "actor_id": 20830,
+      "actor_name": "Isao Kimura",
+      "film_count": 4,
+      "mean_vote_average": 8.05,
+      "mean_revenue": 163540.5,
+      "known_revenue_count": 2
+    },
+    {
+      "director_id": 108,
+      "director_name": "Peter Jackson",
+      "actor_id": 48,
+      "actor_name": "Sean Bean",
+      "film_count": 3,
+      "mean_vote_average": 8.033333333333333,
+      "mean_revenue": 972181581.0,
+      "known_revenue_count": 3
+    },
+    {
+      "director_id": 108,
+      "director_name": "Peter Jackson",
+      "actor_id": 110,
+      "actor_name": "Viggo Mortensen",
+      "film_count": 3,
+      "mean_vote_average": 8.033333333333333,
+      "mean_revenue": 972181581.0,
+      "known_revenue_count": 3
+    },
+    {
+      "director_id": 108,
+      "director_name": "Peter Jackson",
+      "actor_id": 655,
+      "actor_name": "John Rhys-Davies",
+      "film_count": 3,
+      "mean_vote_average": 8.033333333333333,
+      "mean_revenue": 972181581.0,
+      "known_revenue_count": 3
+    },
+    {
+      "director_id": 108,
+      "director_name": "Peter Jackson",
+      "actor_id": 882,
+      "actor_name": "Liv Tyler",
+      "film_count": 3,
+      "mean_vote_average": 8.033333333333333,
+      "mean_revenue": 972181581.0,
+      "known_revenue_count": 3
+    }
+  ]
+}
