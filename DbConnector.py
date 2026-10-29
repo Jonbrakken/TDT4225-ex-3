@@ -31,13 +31,13 @@ class DbConnector:
                 self.client.close()
             raise
 
-        # get database information
+        #get database information
         print("You are connected to the database:", self.db.name)
         print("-----------------------------------------------\n")
 
     def close_connection(self):
-        # close the cursor
-        # close the DB connection
+        #close the cursor
+        #close the DB connection
         self.client.close()
         print("\n-----------------------------------------------")
         print("Connection to %s-db is closed" % self.db.name)

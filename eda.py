@@ -1,4 +1,3 @@
-"""Streaming raw EDA and cleaned movie distributions, without requiring MongoDB."""
 import csv
 import json
 import math
@@ -71,7 +70,7 @@ def run_eda(data_dir, output_dir, small=False):
     target = output_dir / 'eda' / sources['mode']
     target.mkdir(parents=True, exist_ok=True)
     raw = {}
-    # Inventory every supplied CSV; both ratings streams are processed below.
+    #Inventory every supplied CSV; both ratings streams are processed below.
     for name in ('movies_metadata.csv', 'credits.csv', 'keywords.csv', 'links.csv', 'links_small.csv'):
         print('EDA:', name, flush=True)
         raw[name] = raw_file_summary(data_dir / name)
@@ -100,7 +99,7 @@ def run_eda(data_dir, output_dir, small=False):
         if n % 1000000 == 0:
             print(f'EDA ratings {n:,}', flush=True)
     raw[sources['ratings']] = {'rows': ratings['ratings_rows'], 'columns': columns, 'missing': dict(missing)}
-    # Count/columns for the alternate ratings file without labeling it as analyzed.
+    #Count/columns for the alternate ratings file without labeling it as analyzed.
     alternate = 'ratings.csv' if small else 'ratings_small.csv'
     with (data_dir / alternate).open(encoding='utf-8', newline='') as stream:
         reader = csv.reader(stream)

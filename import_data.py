@@ -1,4 +1,3 @@
-"""Rebuild the two assignment collections with streaming, accounted imports."""
 import json
 from collections import Counter
 from datetime import datetime, timezone
