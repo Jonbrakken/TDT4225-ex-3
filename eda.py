@@ -178,6 +178,28 @@ def plot_eda(target, movies, distributions):
         fig.tight_layout()
         fig.savefig(target / (field + '_distribution.png'), dpi=160)
         plt.close(fig)
+    # Revenue completeness per production country; co-productions count for every listed country.
+    totals, known = Counter(), Counter()
+    for movie in movies.values():
+        for country in movie['production_countries']:
+            name = country['name'] or country['iso_3166_1']
+            totals[name] += 1
+            if movie['revenue'] is not None:
+                known[name] += 1
+    countries = [name for name, _ in totals.most_common(20)]
+    countries.sort(key=lambda name: known[name] / totals[name])
+    shares = [100 * known[name] / totals[name] for name in countries]
+    overall = 100 * sum(m['revenue'] is not None for m in movies.values()) / len(movies)
+    fig, ax = plt.subplots(figsize=(10, 7))
+    bars = ax.barh([f'{name} (n={totals[name]:,})' for name in countries], shares, color='#356b91')
+    ax.bar_label(bars, labels=[f'{share:.1f}%' for share in shares], padding=4)
+    ax.axvline(overall, color='#c0504d', linestyle='--', label=f'All retained movies ({overall:.1f}%)')
+    ax.set(xlim=(0, 100), xlabel='Movies with known positive revenue (%)',
+           title='Revenue completeness by production country (20 most common)')
+    ax.legend(loc='lower right')
+    fig.tight_layout()
+    fig.savefig(target / 'revenue_completeness_by_country.png', dpi=160)
+    plt.close(fig)
 
 
 def print_summary(summary):
